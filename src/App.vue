@@ -1,36 +1,32 @@
+<script>
+import SideBar from './components/sidebar/SideBar.vue';
+import Main from './components/main/Main.vue';
+
+export default {
+  components: {
+    Main,
+    SideBar
+  },
+};
+</script>
+
 <template>
   <div id="app">
-    <div class="sidebar">
-      好友列表
-    </div>
-    <div class="main">
-    </div>
+    <SideBar/>
+    <Main/>
   </div>
 </template>
 
-<script>
-
-</script>
-
 <style lang="sass" src="./style/reset.sass"></style>
 <style lang="scss">
+body{
+  font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
+  background: #ecf3fc;
+}
 #app{
-  width: 900px;
-  height: 600px;
-  background: #000;
+  width: 800px;
+  height: 500px;
   margin: 50px auto;
-  .sidebar, .main {
-    height: 100%;
-  }
-  .sidebar {
-    float: left;
-    width: 250px;
-    background: #4A90E2;
-  }
-  .main {
-    float: left;
-    width: 650px;
-    background: #4A9123;
-  }
+  background: #fff;
 }
 </style>
