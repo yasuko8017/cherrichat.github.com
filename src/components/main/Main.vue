@@ -1,12 +1,14 @@
 <script>
 import Header from './Header.vue';
 import StartUse from './StartUse.vue';
+import Chat from './Chat.vue';
 
 export default {
   components:
     {
       Header,
-      StartUse,
+      //StartUse,
+      Chat,
     },
   };
 </script>
@@ -14,7 +16,8 @@ export default {
 <template>
   <div class="main">
     <Header/>
-    <StartUse/>
+    <!--<StartUse/>-->
+    <Chat/>
   </div>
 </template>
 

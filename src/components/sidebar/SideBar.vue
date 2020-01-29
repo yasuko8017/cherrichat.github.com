@@ -31,8 +31,7 @@ export default {
   float: left;
   width: 220px;
   height: 100%;
-  border-right: #ddd solid 1px;
-  box-shadow:12px 8px 5px -10px #ddd;
+  box-shadow: 12px 8px 4px -10px #ddd;
   box-sizing: border-box;
   .title{
     padding: 10px;
