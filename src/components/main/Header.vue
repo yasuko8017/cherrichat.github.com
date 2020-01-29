@@ -1,13 +1,38 @@
+<script>
+import i18n from "../../i18n/i18n";
+
+export default {
+  methods: {
+
+    switchLang(newLang){
+      i18n.locale = newLang;
+
+      let twLangBtn = document.getElementById("twLangBtn");
+      let enLangBtn = document.getElementById("enLangBtn");
+      if(newLang == 'tw')
+      {
+        twLangBtn.classList.add("usedLangBtn");
+        enLangBtn.classList.remove("usedLangBtn");
+      }else{
+        twLangBtn.classList.remove("usedLangBtn");
+        enLangBtn.classList.add("usedLangBtn");
+      }
+    },
+  },
+};
+
+</script>
+
 <template>
   <div class="header">
     <div class="title">
       Cherri Chat
     </div>
     <div class="btnSpace">
-      <div class="cnLangBtn useLangBtn">
+      <div id="twLangBtn" class="langBtn usedLangBtn" @click="switchLang('tw')">
         中文
       </div>
-      <div class="enLangBtn">
+      <div id="enLangBtn" class="langBtn" @click="switchLang('en')">
         English
       </div>
     </div>
@@ -37,7 +62,7 @@
     right: 160px;
     top: 0;
   }
-  .cnLangBtn, .enLangBtn{
+  .langBtn{
     border: #fff solid 1px;
     border-radius:999em;
     font-size: 0.6em;
@@ -45,7 +70,7 @@
     margin: 0px 3px;
     float: left;
   }
-  .useLangBtn{
+  .usedLangBtn{
     background: #fff;
     color: #4A90E2;
     font-weight: bold;

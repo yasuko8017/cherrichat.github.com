@@ -1,6 +1,7 @@
 <script>
 import FriendItem from './FriendItem.vue';
 import friends from "../../data/friends";
+import i18n from "../../i18n/i18n";
 
 export default {
   computed:{
@@ -18,7 +19,7 @@ export default {
 <template>
   <div class="sidebar">
     <div class="title">
-      好友列表({{this.friends.length}})
+      {{$t("_friends_list")}} ({{this.friends.length}})
     </div>
     <FriendItem v-for="friend in friends" :friend="friend"/>
   </div>
