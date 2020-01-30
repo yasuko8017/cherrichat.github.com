@@ -1,11 +1,13 @@
 <script>
 import ChatHeader from './chat/ChatHeader.vue';
 import InputMsgSpace from './chat/InputMsgSpace.vue';
+import MsgDataSpace from './chat/MsgDataSpace.vue';
 
 export default {
   components:
   {
     ChatHeader,
+    MsgDataSpace,
     InputMsgSpace,
   },
 };
@@ -14,6 +16,7 @@ export default {
 <template>
   <div class="chat">
     <ChatHeader/>
+    <MsgDataSpace/>
     <InputMsgSpace/>
   </div>
 </template>
