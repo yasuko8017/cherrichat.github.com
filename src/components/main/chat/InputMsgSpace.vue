@@ -23,6 +23,7 @@
     outline: none;
     background: none;
     font-size: 0.8em;
+    caret-color: #4A90E2;
   }
   img{
     width: 25px;

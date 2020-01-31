@@ -1,3 +1,33 @@
+<script>
+import SearchSpace from './SearchSpace.vue';
+
+export default {
+  data(){
+    return {
+      isSearchShow: false,
+    };
+  },
+  components:
+  {
+    SearchSpace,
+  },
+  methods: {
+    showSearchSpace(){
+      if(this.isSearchShow == false){
+        this.isSearchShow = true;
+        let searchBtn = document.getElementById("searchBtn");
+        searchBtn.classList.add("usedToolBtn");
+      }else{
+        this.closeSearchSpace();
+      }
+    },
+    closeSearchSpace(){
+      this.isSearchShow = false;
+    }
+  },
+};
+</script>
+
 <template>
   <div class="chatHeader">
     <div class="friend">
@@ -8,13 +38,14 @@
       </div>
     </div>
     <div class="toolbar">
-      <div id="searchBtn" class="toolBtn usedToolBtn">
+      <div id="searchBtn" @click="showSearchSpace()" class="toolBtn">
         <img src="../../../assets/ic_search.png">
       </div>
       <div id="addMemoBtn" class="toolBtn">
         <img src="../../../assets/ic_note.png">
       </div>
     </div>
+    <SearchSpace v-if="isSearchShow"/>
   </div>
 </template>
 

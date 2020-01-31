@@ -19,7 +19,7 @@ export default {
 <template>
   <div class="sidebar">
     <div class="title">
-      {{$t("_friends_list")}} ({{this.friends.length}})
+      {{ $t("_friends_list") }} ({{this.friends.length}})
     </div>
     <FriendItem v-for="friend in friends" :friend="friend"/>
   </div>
