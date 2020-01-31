@@ -25,7 +25,7 @@ body{
 }
 #app{
   width: 800px;
-  height: 500px;
+  height: 550px;
   margin: 50px auto;
   background: #fff;
 }

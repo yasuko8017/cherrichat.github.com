@@ -1,29 +1,46 @@
 <script>
 import SearchSpace from './SearchSpace.vue';
+import MemoSpace from './MemoSpace.vue';
 
 export default {
   data(){
     return {
       isSearchShow: false,
+      isMemoShow: false,
     };
   },
   components:
   {
     SearchSpace,
+    MemoSpace,
   },
   methods: {
-    showSearchSpace(){
+    showSearch(){
+      let searchBtn = document.getElementById("searchBtn");
       if(this.isSearchShow == false){
         this.isSearchShow = true;
-        let searchBtn = document.getElementById("searchBtn");
         searchBtn.classList.add("usedToolBtn");
       }else{
-        this.closeSearchSpace();
+        this.closeSearch();
+        searchBtn.classList.remove("usedToolBtn");
       }
     },
-    closeSearchSpace(){
+    closeSearch(){
       this.isSearchShow = false;
-    }
+    },
+    showMemo(){
+      let addMemoBtn = document.getElementById("addMemoBtn");
+      if(this.isMemoShow == false){
+        this.isMemoShow = true;
+        addMemoBtn.classList.add("usedToolBtn");
+      }else{
+        this.closeMemo();
+        addMemoBtn.classList.remove("usedToolBtn");
+      }
+    },
+    closeMemo(){
+      this.isMemoShow = false;
+    },
   },
 };
 </script>
@@ -38,14 +55,15 @@ export default {
       </div>
     </div>
     <div class="toolbar">
-      <div id="searchBtn" @click="showSearchSpace()" class="toolBtn">
+      <div id="searchBtn" @click="showSearch()" class="toolBtn">
         <img src="../../../assets/ic_search.png">
       </div>
-      <div id="addMemoBtn" class="toolBtn">
+      <div id="addMemoBtn" @click="showMemo()" class="toolBtn">
         <img src="../../../assets/ic_note.png">
       </div>
     </div>
     <SearchSpace v-if="isSearchShow"/>
+    <MemoSpace v-if="isMemoShow"/>
   </div>
 </template>
 
@@ -74,9 +92,8 @@ export default {
   }
   .toolbar{
     position: absolute;
-    padding: 9px 15px;
-    right: 0;
-    top: 0;
+    right: 25px;
+    top: 10px;
     .toolBtn{
       width:25px;
       height:25px;

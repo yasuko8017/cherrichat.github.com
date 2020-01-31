@@ -11,7 +11,6 @@
   height: 60px;
   border-top: #c8ddf6 solid 1px;
   box-sizing: border-box;
-  position: absolute;
   bottom: 0;
   textarea{
     resize: none;

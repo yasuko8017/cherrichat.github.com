@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss">
 .msgDataSpace{
-  height: 340px;
+  height: 390px;
   box-sizing: border-box;
   padding-right: 20px;
   padding-bottom: 20px;
