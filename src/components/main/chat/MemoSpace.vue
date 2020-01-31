@@ -8,16 +8,12 @@
     <div class="memo">
       <div class="memoMsg">
         <span>2019/07/01 13:45</span>
-        <div class="content">
-          備忘訊息1
-        </div>
+        <div class="content">備忘訊息1</div>
         <img src="../../../assets/ic_close2.png">
       </div>
       <div class="memoMsg">
         <span>2019/07/01 13:45</span>
-        <div class="content">
-          備忘訊息1
-        </div>
+        <div class="content">備忘訊息1</div>
         <img src="../../../assets/ic_close2.png">
       </div>
     </div>
@@ -77,6 +73,7 @@
       }
       .content{
         line-height: 1.5em;
+        white-space:pre;
       }
       img{
         width: 7px;

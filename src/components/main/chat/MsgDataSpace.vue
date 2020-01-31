@@ -33,13 +33,16 @@ export default {
   justify-content: flex-end;
   align-items: flex-end;
   .msg{
-    height: 33px;
+    padding: 8px 14px;
+    background: #4A90E2;
+    border-radius: 15px;
+    margin: 2px;
     span{
-      padding: 8px 18px;
       color: #fff;
       font-size: 0.8em;
-      background: #4A90E2;
-      border-radius:999em;
+      padding: 4px;
+      line-height: 1.5em;
+      white-space:pre;
     }
   }
 
