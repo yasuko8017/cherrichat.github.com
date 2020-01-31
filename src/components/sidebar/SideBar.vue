@@ -1,7 +1,6 @@
 <script>
 import FriendItem from './FriendItem.vue';
 import friends from "../../data/friends";
-import i18n from "../../i18n/i18n";
 
 export default {
   computed:{

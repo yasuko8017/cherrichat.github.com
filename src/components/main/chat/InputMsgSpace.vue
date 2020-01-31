@@ -1,6 +1,6 @@
 <template>
   <div class="inputMsgSpace">
-    <textarea placeholder="輸入訊息..."></textarea>
+    <textarea v-bind:placeholder="$t('_message')"></textarea>
     <img src="../../../assets/ic_sent.png">
   </div>
 </template>

@@ -1,10 +1,6 @@
-<script>
-import i18n from "../../../i18n/i18n";
-</script>
-
 <template>
   <div class="memoSpace">
-    <textarea placeholder="輸入訊息..."></textarea>
+    <textarea v-bind:placeholder="$t('_message')"></textarea>
     <div class="addBtn">
       {{ $t("_add") }}
     </div>
