@@ -1,21 +1,62 @@
+<script>
+import MemoItem from './MemoItem.vue';
+
+export default {
+  data(){
+    return {
+      memos: [],
+      memoObj: {
+        msg: '',
+        date: '',
+      },
+      memoMsg: '',
+    };
+  },
+  components:
+  {
+    MemoItem,
+  },
+  methods: {
+    addMemo(){
+      let now = new Date();
+      this.memoObj.msg = this.memoMsg;
+      this.memoObj.date = this.getFormatDateTime(now);
+      this.memos.push(this.memoObj);
+      this.memoObj = {};
+      this.memoMsg = '';
+    },
+    removeMemo(idx){
+      console.log("idx = " + idx);
+      this.memos.splice(idx, 1);
+    },
+    getFormatDateTime(datetime){
+      let year = datetime.getFullYear().toString();
+      let month = (datetime.getMonth() + 1).toString();
+      let date = datetime.getDate().toString();
+      let hour = datetime.getHours().toString();
+      let minute = datetime.getMinutes().toString();
+
+      month = month.length == 2 ? month : "0" + month;
+      date = date.length == 2 ? date : "0" + date;
+      hour = hour.length == 2 ? hour : "0" + hour;
+      minute = minute.length == 2 ? minute : "0" + minute;
+
+      // yyyy/mm/dd hh:MM
+      return year + '/' + month + '/' + date + ' ' + hour + ':' + minute;
+    }
+  },
+}
+</script>
+
 <template>
   <div class="memoSpace">
-    <textarea v-bind:placeholder="$t('_message')"></textarea>
-    <div class="addBtn">
+    <textarea v-model="memoMsg" v-bind:placeholder="$t('_message')"></textarea>
+    <div id="addBtn" @click="addMemo()">
       {{ $t("_add") }}
     </div>
     <hr/>
-    <div class="memo">
-      <div class="memoMsg">
-        <span>2019/07/01 13:45</span>
-        <div class="content">備忘訊息1</div>
-        <img src="../../../assets/ic_close2.png">
-      </div>
-      <div class="memoMsg">
-        <span>2019/07/01 13:45</span>
-        <div class="content">備忘訊息1</div>
-        <img src="../../../assets/ic_close2.png">
-      </div>
+    <div class="memoList">
+      <MemoItem v-for="(memo, i) in memos" :memo="memo" :idx="i" @remove="removeMemo"/>
     </div>
   </div>
 </template>
@@ -41,9 +82,9 @@
     resize: none;
     font-size: 0.8em;
     caret-color: #4A90E2;
-    margin-bottom: 6px;
+    margin-bottom: 7px;
   }
-  .addBtn{
+  #addBtn{
     padding: 6px;
     text-align: center;
     background: #4A90E2;
@@ -54,34 +95,11 @@
     border: 0;
     height: 1px;
     background: #c8ddf6;
+    margin: 10px 0px;
   }
-  .memo{
+  .memoList{
     height: 190px;
     overflow:auto;
-    .memoMsg{
-      height: 70px;
-      box-sizing: border-box;
-      padding: 3px 7px;
-      border: #c8ddf6 solid 1px;
-      font-size: 0.7em;
-      margin-bottom: 5px;
-      overflow:auto;
-      position: relative;
-      span{
-        color: #6ea6e7;
-        line-height: 2em;
-      }
-      .content{
-        line-height: 1.5em;
-        white-space:pre;
-      }
-      img{
-        width: 7px;
-        position: absolute;
-        top: 5px;
-        right: 5px;
-      }
-    }
   }
 }
 .memoSpace:after{
