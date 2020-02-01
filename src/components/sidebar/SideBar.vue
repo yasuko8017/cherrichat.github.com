@@ -12,6 +12,11 @@ export default {
   {
     FriendItem,
   },
+  methods: {
+    getChat(id){
+      this.$emit('getChat', id);
+    }
+  },
 };
 </script>
 
@@ -20,7 +25,7 @@ export default {
     <div class="title">
       {{ $t("_friends_list") }} ({{this.friends.length}})
     </div>
-    <FriendItem v-for="friend in friends" :friend="friend"/>
+    <FriendItem v-for="friend in friends" :friend="friend" @getChat="getChat"/>
   </div>
 </template>
 

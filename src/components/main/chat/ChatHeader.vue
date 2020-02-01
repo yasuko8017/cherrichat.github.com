@@ -3,6 +3,7 @@ import SearchSpace from './SearchSpace.vue';
 import MemoSpace from './MemoSpace.vue';
 
 export default {
+  props: ['chatName'],
   data(){
     return {
       isSearchShow: false,
@@ -51,7 +52,7 @@ export default {
       <div class="imgCircle">
       </div>
       <div class="name">
-        保羅
+        {{chatName}}
       </div>
     </div>
     <div class="toolbar">

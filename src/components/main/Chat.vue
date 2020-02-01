@@ -4,6 +4,7 @@ import InputMsgSpace from './chat/InputMsgSpace.vue';
 import MsgDataSpace from './chat/MsgDataSpace.vue';
 
 export default {
+  props: ['chatData'],
   components:
   {
     ChatHeader,
@@ -15,8 +16,8 @@ export default {
 
 <template>
   <div class="chat">
-    <ChatHeader/>
-    <MsgDataSpace/>
+    <ChatHeader :chatName="chatData.name"/>
+    <MsgDataSpace :chatMsg="chatData.msg"/>
     <InputMsgSpace/>
   </div>
 </template>

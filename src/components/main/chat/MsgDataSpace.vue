@@ -1,21 +1,12 @@
 <script>
 export default {
-  data(){
-    return {
-      msgs: [
-        "保羅",
-        "你好, 我是傑西卡",
-        "我喜歡吃的食物有",
-        "各種巧克力口味的甜點"
-      ]
-    };
-  },
+  props: ['chatMsg'],
 };
 </script>
 
 <template>
   <div class="msgDataSpace">
-    <div class="msg" v-for="msg in msgs">
+    <div class="msg" v-for="msg in chatMsg">
       <span>{{msg}}</span>
     </div>
   </div>

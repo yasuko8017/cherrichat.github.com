@@ -3,17 +3,27 @@ import SideBar from './components/sidebar/SideBar.vue';
 import Main from './components/main/Main.vue';
 
 export default {
+  data(){
+    return {
+      chatId: '',
+    };
+  },
   components: {
     Main,
-    SideBar
+    SideBar,
+  },
+  methods: {
+    getChat(id){
+      this.chatId = id;
+    }
   },
 };
 </script>
 
 <template>
   <div id="app">
-    <SideBar/>
-    <Main/>
+    <SideBar @getChat="getChat"/>
+    <Main :chatId="chatId"/>
   </div>
 </template>
 

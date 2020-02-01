@@ -1,11 +1,16 @@
 <script>
 export default {
   props: ['friend'],
+  methods: {
+    getChat(){
+      this.$emit('getChat', this.friend.id);
+    },
+  },
 }
 </script>
 
 <template>
-  <div class="friendItem">
+  <div class="friendItem" @click="getChat">
     <div class="imgCircle">
     </div>
     <div class="info">
