@@ -15,4 +15,9 @@ npm run dev
 npm run build
 ```
 
+``` bash
+# 起json server - 另開bash
+json-server db.json
+```
+
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).

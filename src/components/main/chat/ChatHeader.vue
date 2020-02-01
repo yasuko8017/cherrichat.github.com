@@ -3,7 +3,7 @@ import SearchSpace from './SearchSpace.vue';
 import MemoSpace from './MemoSpace.vue';
 
 export default {
-  props: ['chatName'],
+  props: ['chatData'],
   data(){
     return {
       isSearchShow: false,
@@ -42,7 +42,7 @@ export default {
     closeMemo(){
       this.isMemoShow = false;
     },
-  },
+  }
 };
 </script>
 
@@ -52,7 +52,7 @@ export default {
       <div class="imgCircle">
       </div>
       <div class="name">
-        {{chatName}}
+        {{chatData.name}}
       </div>
     </div>
     <div class="toolbar">
@@ -64,7 +64,7 @@ export default {
       </div>
     </div>
     <SearchSpace v-if="isSearchShow"/>
-    <MemoSpace v-if="isMemoShow"/>
+    <MemoSpace v-if="isMemoShow" :chatId="chatData.id"/>
   </div>
 </template>
 

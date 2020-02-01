@@ -16,7 +16,7 @@ export default {
 
 <template>
   <div class="chat">
-    <ChatHeader :chatName="chatData.name"/>
+    <ChatHeader :chatData="chatData"/>
     <MsgDataSpace :chatMsg="chatData.msg"/>
     <InputMsgSpace/>
   </div>

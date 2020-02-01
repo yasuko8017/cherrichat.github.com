@@ -3,8 +3,11 @@ import MemoItem from './MemoItem.vue';
 import Format from '../../js/format';
 
 export default {
+  props: ['chatId'],
   data(){
     return {
+      memoUrl: 'http://localhost:3000/memo/'+ this.chatId,
+      memoJson: '',
       memos: [],
       memoObj: {
         msg: '',
@@ -23,14 +26,42 @@ export default {
       this.memoObj.msg = this.memoMsg;
       this.memoObj.date = Format.getFormatDateTime(now, '/');
       this.memos.push(this.memoObj);
+      this.memoJson.memoList = this.memos;
+
+      fetch(this.memoUrl, {
+        method: 'PUT',
+        body: JSON.stringify(this.memoJson),
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      });
+
       this.memoObj = {};
       this.memoMsg = '';
     },
     removeMemo(idx){
       this.memos.splice(idx, 1);
-    },
+      this.memoJson.memoList = this.memos;
 
+      fetch(this.memoUrl, {
+        method: 'PUT',
+        body: JSON.stringify(this.memoJson),
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      });
+    }
   },
+  mounted(){
+    fetch(this.memoUrl)
+      .then(response => {
+        return response.json();
+      })
+      .then(jsonData => {
+        this.memoJson = jsonData;
+        this.memos = jsonData.memoList;
+      });
+  }
 }
 </script>
 
