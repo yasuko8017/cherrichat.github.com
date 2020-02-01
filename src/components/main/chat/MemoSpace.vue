@@ -1,5 +1,6 @@
 <script>
 import MemoItem from './MemoItem.vue';
+import Format from '../../js/format';
 
 export default {
   data(){
@@ -20,30 +21,15 @@ export default {
     addMemo(){
       let now = new Date();
       this.memoObj.msg = this.memoMsg;
-      this.memoObj.date = this.getFormatDateTime(now);
+      this.memoObj.date = Format.getFormatDateTime(now, '/');
       this.memos.push(this.memoObj);
       this.memoObj = {};
       this.memoMsg = '';
     },
     removeMemo(idx){
-      console.log("idx = " + idx);
       this.memos.splice(idx, 1);
     },
-    getFormatDateTime(datetime){
-      let year = datetime.getFullYear().toString();
-      let month = (datetime.getMonth() + 1).toString();
-      let date = datetime.getDate().toString();
-      let hour = datetime.getHours().toString();
-      let minute = datetime.getMinutes().toString();
 
-      month = month.length == 2 ? month : "0" + month;
-      date = date.length == 2 ? date : "0" + date;
-      hour = hour.length == 2 ? hour : "0" + hour;
-      minute = minute.length == 2 ? minute : "0" + minute;
-
-      // yyyy/mm/dd hh:MM
-      return year + '/' + month + '/' + date + ' ' + hour + ':' + minute;
-    }
   },
 }
 </script>
