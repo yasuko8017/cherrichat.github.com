@@ -6,8 +6,10 @@ export default {
   props: ['chatData'],
   data(){
     return {
+      chatReplaceMsg: [],
       isSearchShow: false,
       isMemoShow: false,
+      lastSearchText: '',
     };
   },
   components:
@@ -23,11 +25,33 @@ export default {
         searchBtn.classList.add("usedToolBtn");
       }else{
         this.closeSearch();
-        searchBtn.classList.remove("usedToolBtn");
       }
     },
     closeSearch(){
+      searchBtn.classList.remove("usedToolBtn");
       this.isSearchShow = false;
+      this.inputSearch("");
+    },
+    inputSearch(text){
+      // todo: html injection
+      let chatMsg = this.chatData.msg;
+      console.log("chatMsg=" + chatMsg);
+      if(this.lastSearchText != text)
+      {
+        let recoverMsg = chatMsg.map((el) => {
+          el = el.replace("<span class=\'searchMark\'>", "");
+          el = el.replace("</span>", "");
+          return el;
+        });
+        console.log("recoverMsg=" + recoverMsg);
+        chatMsg = recoverMsg;
+
+        this.chatReplaceMsg = chatMsg.map(el => el.replace(text, `<span class='searchMark'>${text}</span>`));
+      }else{
+        this.chatReplaceMsg = chatMsg;
+      }
+      this.lastSearchText = text;
+      this.$emit('input', this.chatReplaceMsg);
     },
     showMemo(){
       let addMemoBtn = document.getElementById("addMemoBtn");
@@ -63,8 +87,12 @@ export default {
         <img src="../../../assets/ic_note.png">
       </div>
     </div>
-    <SearchSpace v-if="isSearchShow"/>
-    <MemoSpace v-if="isMemoShow" :chatId="chatData.id"/>
+    <SearchSpace v-if="isSearchShow"
+                :chatMsg="chatData.msg"
+                @inputSearch="inputSearch"
+                @closeSearch="closeSearch"/>
+    <MemoSpace v-if="isMemoShow"
+              :chatId="chatData.id"/>
   </div>
 </template>
 

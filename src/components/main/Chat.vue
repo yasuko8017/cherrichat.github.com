@@ -11,12 +11,18 @@ export default {
     MsgDataSpace,
     InputMsgSpace,
   },
+  methods:
+  {
+    inputSearch(chatReplaceMsg){
+      this.chatData.msg = chatReplaceMsg;
+    },
+  }
 };
 </script>
 
 <template>
   <div class="chat">
-    <ChatHeader :chatData="chatData"/>
+    <ChatHeader :chatData="chatData" @input="inputSearch"/>
     <MsgDataSpace :chatMsg="chatData.msg"/>
     <InputMsgSpace/>
   </div>
