@@ -6,7 +6,7 @@ export default {
   props: ['chatId'],
   data(){
     return {
-      memoUrl: 'http://localhost:3000/memo/'+ this.chatId,
+      memoUrl: 'http://my-json-server.typicode.com/yasuko8017/cherrichat-jsonserver/memo/' + this.chatId,
       memoJson: '',
       memos: [],
       memoObj: {

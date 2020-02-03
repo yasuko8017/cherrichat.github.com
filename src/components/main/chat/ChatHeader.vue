@@ -41,7 +41,6 @@ export default {
     inputSearch(text){
       // todo: html injection
       let chatMsg = this.chatData.msg;
-      console.log("chatMsg=" + chatMsg);
       if(this.lastSearchText != text)
       {
         let recoverMsg = chatMsg.map((el) => {
@@ -49,7 +48,6 @@ export default {
           el = el.replace("</span>", "");
           return el;
         });
-        console.log("recoverMsg=" + recoverMsg);
         chatMsg = recoverMsg;
 
         this.chatReplaceMsg = chatMsg.map(el => el.replace(text, `<span class='searchMark'>${text}</span>`));

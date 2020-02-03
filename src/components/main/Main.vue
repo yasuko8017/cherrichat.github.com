@@ -24,8 +24,7 @@ export default {
     }
     this.id = this.chatId;
 
-    let url = 'http://localhost:3000/chatMsgData/'+ this.chatId;
-    //console.log("url=" + url);
+    let url = 'http://my-json-server.typicode.com/yasuko8017/cherrichat-jsonserver/chatMsgData/'+ this.chatId;
     fetch(url)
       .then(response => {
         return response.json();
