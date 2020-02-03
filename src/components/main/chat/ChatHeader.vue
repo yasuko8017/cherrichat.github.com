@@ -17,6 +17,12 @@ export default {
     SearchSpace,
     MemoSpace,
   },
+  watch: {
+    chatData() {
+      this.closeSearch();
+      this.closeMemo();
+    }
+  },
   methods: {
     showSearch(){
       let searchBtn = document.getElementById("searchBtn");
@@ -60,10 +66,10 @@ export default {
         addMemoBtn.classList.add("usedToolBtn");
       }else{
         this.closeMemo();
-        addMemoBtn.classList.remove("usedToolBtn");
       }
     },
     closeMemo(){
+      addMemoBtn.classList.remove("usedToolBtn");
       this.isMemoShow = false;
     },
   }
